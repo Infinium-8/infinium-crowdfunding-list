@@ -1,0 +1,44 @@
+{
+  "coins": [
+    {
+      "name": "Infinium",
+      "address": "inf1guboUTvbBTQfapqET8Tf5oCMrZ3Qz32wny78Z6iu6XKDbBhTfiyL6FSG8mtuMEG2km3Wik3RdDY86ffaQs4N1NsNvyNgpe",
+      "balance": "2035.10"
+    },
+    {
+      "name": "Monero Classic",
+      "address": "48dvANKHHyQXyXL6KU85rdHtKAjm9u2vr2ziws26UP2Bcpp3PdjnxsbRb8AWfeVVmn2DDY9jEG7kkYeJu9DA7WjwEHDibDC",
+      "balance": "11.99"
+    },
+    {
+      "name": "Monero",
+      "address": "42Qd3kfwebtNZJGjNPgnNkUYmxkbKdmXGhd5o4pxrnG1W1wUYXx8GdNY2BU3ZhKJuMGSM48vWUk2iTBJfUEA8dNu8PjWb5t",
+      "balance": "0.00"
+    },
+    {
+      "name": "Lethean",
+      "address": "iz5Ys6WP4zFTF323uBfrePBELQax7b4PSaEnMWsm2f5ME3S62Z46sp3G55QSmz3zisDqfaF9aX9LJfxp2Tyz5E8j11LGoqJ1u",
+      "balance": "4453.31"
+    },
+    {
+      "name": "PepePrivate",
+      "address": "PEPExfbB3ZwXEFJCLH4SjhUVK432YcSJA9hxvnaDSgAc6Fpg6b84gT29tnfc5zCdenccXY95we5DpYpu4YWN7sdsBABsMp7gmSW",
+      "balance": "19023.01"
+    },
+    {
+      "name": "Graft",
+      "address": "G62A9QBypgcWbjAsofADUSB1wpMNZtD4vaEFvyh6LVLSdjzYrbcJKzu8NnbWJCwLEKZWpNmDZinq6RjxTQUemDCRFnd8Rir",
+      "balance": "699779.64"
+    },
+    {
+      "name": "GNTLCoin",
+      "address": "gnt1jU5mwbALfjKsKJWt8HXHbaVNLf6oaExdmXpLqoDQGmdAodrpS73jXCuDPwEUHhTEDq5qDbq116XQVSCYE2E49EWyD1bZTd",
+      "balance": "1866.65"
+    },
+    {
+      "name": "Morelo",
+      "address": "emo1eSwJ8gXZwQNSVLQjLpemWRX8f5oeD9U5dkt6MXm8APU6bH2f3BERUYstpgDsQTChd746PGFDQ1uc1cNdJ1Fn7mY21DnpUK",
+      "balance": "7650.06"
+    }
+  ]
+}
