@@ -5,6 +5,13 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
+
 const coinsBasic = 'https://raw.githubusercontent.com/Infinium-8/infinium-crowdfunding-json/refs/heads/master/infinium-crowdfunding.json';
 
 async function fetchCoins() {
@@ -44,8 +51,11 @@ async function callRpcForCoins(coin) {
     let rpcMethodType = (rpcMethod === "getbalance") ? "GET" : "POST";
 
     console.log(chalk.blue(`Calling to ${rpcMethod} in ${fullUrl} using the method ${rpcMethodType}...`));
-
-    if (coin.name === 'Monero'){
+   
+    if (coin.name === 'Talleo') {
+        // Talleo uses getBalance and returns availableBalance
+        result = await callJsonRpc(fullUrl, "getBalance", {}, "POST");
+    } else if (coin.name === 'Monero'){
          result = await callJsonRpc(fullUrl, rpcMethod, {"address_indices":[0,1]}, rpcMethodType);
     } else {
          result = await callJsonRpc(fullUrl, rpcMethod, [], rpcMethodType);
@@ -67,20 +77,29 @@ async function updateCrowdfundingList() {
     for (const coin of coins) {
         console.log(`Updating information for the currency: ${coin.name}`);
         const info = await callRpcForCoins(coin);
-        const addressInfo = await callJsonRpc(`http://${coin.url}:${coin.port}/json_rpc`, "getaddress", [], "GET");              
+        const addressInfo = await callJsonRpc(`http://${coin.url}:${coin.port}/json_rpc`, "getaddress", [], "GET");
+        const addressesInfo = await callJsonRpc(`http://${coin.url}:${coin.port}/json_rpc`, "getAddresses", {}, "GET");   
                 
         if (info && info.per_subaddress) {
             updateCrowdfunding.push({
                 name: coin.name,
                 address: info.per_subaddress[0].address,
-                balance: (info.balance / 10**coin.decimal).toFixed(2)
+                balance: (info.balance / 10**coin.decimal).toFixed(2),
+		image: coin.image
             });
-        }
-        else if (info && !info.per_subaddress){
+        } else if (info && !info.per_subaddress && coin.name !== 'Talleo'){
             updateCrowdfunding.push({
                 name: coin.name,
                 address: addressInfo.address,
-                balance: (info.balance / 10**coin.decimal).toFixed(2)
+                balance: (info.balance / 10**coin.decimal).toFixed(2),
+		image: coin.image
+            });
+        } else if (info && coin.name === 'Talleo') {
+            updateCrowdfunding.push({
+                name: coin.name,
+                address: addressesInfo.addresses[0],
+                balance: (info.availableBalance / 10**coin.decimal).toFixed(2),
+                image: coin.image
             });
         } else {
             console.log(chalk.red(`Error getting information for currency: ${coin.name}`));
