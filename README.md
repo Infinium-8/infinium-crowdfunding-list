@@ -3,7 +3,7 @@
 # Infinium Crowdfunding List (API)
 A API JSON that shows you Infinium crowdfunding.
 
-To consume the list, use the following URL: https://crowdfunding.infinium.space/list/
+To consume the list, use the following URL: [https://crowdfunding.infinium.space/list/](https://crowdfunding.infinium.space/crowdfunding/balances/)
 
 ### Have Questions or Need Help?
 
